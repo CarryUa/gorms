@@ -1,12 +1,15 @@
 import clsx from "clsx";
+import { HTMLInputTypeAttribute } from "react";
 
 type TextInputProps = {
   className?: string;
   placeholder?: string;
   type?: string;
+  id?: string;
   name: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
-export default function TextInput({ className, placeholder, name, type = "text" }: TextInputProps) {
+export default function BaseInput({ className, placeholder, name, id, type = "text", onChange }: TextInputProps) {
   return (
     <input
       className={clsx(
@@ -15,7 +18,9 @@ export default function TextInput({ className, placeholder, name, type = "text" 
       )}
       placeholder={placeholder}
       type={type}
+      onChange={onChange}
       name={name}
+      id={id}
     />
   );
 }
